@@ -5,16 +5,16 @@ export class Init {
             let emps = [
                 {
                     empid: 1,
-                    name: 'Hydrogen',
-                    project: 'one',
-                    rating: 1.0079,
-                    comments: 'good'
+                    name: 'Karthik',
+                    project: 'Project1',
+                    rating: 4.5,
+                    comments: 'good learning path'
                 },
                 {
-                    empid: 2, name: 'heilon', project: 'two', rating: 2.0079, comments: 'v good'
+                    empid: 2, name: 'Prudhvi', project: 'Project2', rating: 5, comments: 'Great team'
                 },
                 {
-                    empid: 3, name: 'neon', project: 'three', rating: 3.0079, comments: 'bad'
+                    empid: 3, name: 'Nick', project: 'Project3', rating: 4, comments: 'Good Project'
                 }
             ];
 

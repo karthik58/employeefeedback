@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { catchError, tap, map } from 'rxjs/operators';
-import { Employee } from './employee';
+// import { Employee } from './employee';
 import { Init } from './init-employee';
 
 const httpOptions = {
@@ -42,12 +42,11 @@ export class ApiService extends Init {
   }
 
 
-  updateTodo(oldText, newText) {
+  updateTodo(oldEmp, newEmp) {
     let emps = JSON.parse(localStorage.getItem('emps'));
-
     for (let i = 0; i < emps.length; i++) {
-      if (emps[i].text == oldText) {
-        emps[i].text = newText;
+      if (emps[i].empid == oldEmp) {
+        emps[i] = newEmp;
       }
     }
     localStorage.setItem('emps', JSON.stringify(emps));
@@ -77,44 +76,44 @@ export class ApiService extends Init {
     };
   }
 
-  getCases(): Observable<Employee[]> {
-    return this.http.get<Employee[]>(`${apiUrl}`)
-      .pipe(
-        tap(cases => console.log('fetched cases')),
-        catchError(this.handleError('getCases', []))
-      );
-  }
+  // getCases(): Observable<Employee[]> {
+  //   return this.http.get<Employee[]>(`${apiUrl}`)
+  //     .pipe(
+  //       tap(cases => console.log('fetched cases')),
+  //       catchError(this.handleError('getCases', []))
+  //     );
+  // }
 
-  getCasesById(id: string): Observable<Employee> {
-    const url = `${apiUrl}/${id}`;
-    return this.http.get<Employee>(url).pipe(
-      tap(_ => console.log(`fetched Employee id=${id}`)),
-      catchError(this.handleError<Employee>(`getEmployeeById id=${id}`))
-    );
-  }
+  // getCasesById(id: string): Observable<Employee> {
+  //   const url = `${apiUrl}/${id}`;
+  //   return this.http.get<Employee>(url).pipe(
+  //     tap(_ => console.log(`fetched Employee id=${id}`)),
+  //     catchError(this.handleError<Employee>(`getEmployeeById id=${id}`))
+  //   );
+  // }
 
-  addCases(cases: Employee): Observable<Employee> {
-    return this.http.post<Employee>(apiUrl, cases, httpOptions).pipe(
-      tap((c: Employee) => console.log(`added product w/ id=${c._id}`)),
-      catchError(this.handleError<Employee>('addEmployee'))
-    );
-  }
+  // addCases(cases: Employee): Observable<Employee> {
+  //   return this.http.post<Employee>(apiUrl, cases, httpOptions).pipe(
+  //     tap((c: Employee) => console.log(`added product w/ id=${c._id}`)),
+  //     catchError(this.handleError<Employee>('addEmployee'))
+  //   );
+  // }
 
-  updateCases(id: string, cases: Employee): Observable<any> {
-    const url = `${apiUrl}/${id}`;
-    return this.http.put(url, cases, httpOptions).pipe(
-      tap(_ => console.log(`updated Employee id=${id}`)),
-      catchError(this.handleError<any>('updateEmployee'))
-    );
-  }
+  // updateCases(id: string, cases: Employee): Observable<any> {
+  //   const url = `${apiUrl}/${id}`;
+  //   return this.http.put(url, cases, httpOptions).pipe(
+  //     tap(_ => console.log(`updated Employee id=${id}`)),
+  //     catchError(this.handleError<any>('updateEmployee'))
+  //   );
+  // }
 
-  deleteCases(id: string): Observable<Employee> {
-    const url = `${apiUrl}/${id}`;
-    return this.http.delete<Employee>(url, httpOptions).pipe(
-      tap(_ => console.log(`deleted Employee id=${id}`)),
-      catchError(this.handleError<Employee>('deleteEmployee'))
-    );
-  }
+  // deleteCases(id: string): Observable<Employee> {
+  //   const url = `${apiUrl}/${id}`;
+  //   return this.http.delete<Employee>(url, httpOptions).pipe(
+  //     tap(_ => console.log(`deleted Employee id=${id}`)),
+  //     catchError(this.handleError<Employee>('deleteEmployee'))
+  //   );
+  // }
 
 
 

@@ -20,7 +20,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 export class AddEmployeeComponent implements OnInit {
 
   emps
-  projectList = ['Demo1', 'Demo2', 'Demo3'];
+  projectList = ['Project1', 'Project2', 'Project3', 'Project4', 'Project5', 'Project6', 'Project7', 'Project8'];
   value: Observable<number>;
 
   empForm: FormGroup;

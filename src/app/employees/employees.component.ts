@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { ApiService } from '../api.service';
 
-import { Employee } from '../employee';
+// import { Employee } from '../employee';
 
 import { MatTableDataSource } from '@angular/material/table';
 
@@ -15,9 +15,9 @@ export class EmployeesComponent implements OnInit {
 
   emps
 
-  displayedColumns: string[] = ['empid', 'name', 'project', 'rating', 'comments', 'actions'];
+  displayedColumns: string[] = [ 'project', 'rating', 'comments', 'actions'];
   recs = new MatTableDataSource([]);
-  data: Employee[] = [];
+  // data: Employee[] = [];
   isLoadingResults = true;
 
   constructor(private api: ApiService) { }
@@ -31,7 +31,6 @@ export class EmployeesComponent implements OnInit {
   }
 
   deleteEmp(id) {
-    alert(id)
     for(let i = 0; i < this.emps.length; i++) {
       if(this.emps[i].empid == id) {
           this.emps.splice(i, 1);

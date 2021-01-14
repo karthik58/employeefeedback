@@ -70,12 +70,18 @@ export class EditEmployeeComponent implements OnInit {
 
 
   onFormSubmit() {
-    for (let i = 0; i < this.emps.length; i++) {
-      if (this.emps[i].empid == this.employeeID) {
-        this.emps[i].empid = this.empForm.value.empid;
-      }
-    }
-    this.api.updateTodo(this.employeeID, this.empForm.value.empid);
+    // console.log('1', this.empForm.value);
+
+    // for (let i = 0; i < this.emps.length; i++) {
+
+    //   if (this.emps[i].empid == this.employeeID) {
+    //   console.log('emps[i]', this.emps[i].empid)
+
+    //     this.emps[i] = this.empForm.value;
+    //   }
+    // }
+    // console.log('edit', this.empForm.value)
+    this.api.updateTodo(this.employeeID, this.empForm.value);
     this.router.navigate(['/employees'])
 
 
@@ -93,8 +99,5 @@ export class EditEmployeeComponent implements OnInit {
     //   );
   }
 
-  casesDetails() {
-    this.router.navigate(['/cases-details', this._id]);
-  }
 
 }
