@@ -1,0 +1,72 @@
+<div class="example-container">
+
+    <div class="button-row">
+        <a mat-flat-button color="primary" [routerLink]="['/employees']">
+            Back
+        </a>
+    </div>
+
+    <mat-card class="example-card">
+
+        <mat-card-title>
+            Edit Feedback
+        </mat-card-title>
+
+        <form [formGroup]="empForm" (ngSubmit)="onFormSubmit()">
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Name</mat-label>
+                <input matInput placeholder="Name" formControlName="name" [errorStateMatcher]="matcher">
+                <mat-error>
+                    <span *ngIf="!empForm.get('name').valid && empForm.get('name').touched">Please enter Name</span>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Empid</mat-label>
+                <input matInput type="number" placeholder="empid" formControlName="empid" [errorStateMatcher]="matcher">
+                <mat-error>
+                    <span *ngIf="!empForm.get('empid').valid && empForm.get('empid').touched">Please enter
+                        empid</span>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>project</mat-label>
+                <mat-select formControlName="project">
+                    <mat-option *ngFor="let gl of projectList" [value]="gl">
+                        {{gl}}
+                    </mat-option>
+                </mat-select>
+                <mat-error>
+                    <span *ngIf="!empForm.get('project').valid && empForm.get('project').touched">Please choose
+                        project</span>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-label>Rating</mat-label>
+
+            <ngx-input-star-rating formControlName="rating"></ngx-input-star-rating>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Address</mat-label>
+                <input matInput placeholder="comments" formControlName="comments" [errorStateMatcher]="matcher">
+                <mat-error>
+                    <span *ngIf="!empForm.get('comments').valid && empForm.get('comments').touched">Please enter
+                        comments</span>
+                </mat-error>
+            </mat-form-field>
+
+            <div class="button-row">
+                <a mat-flat-button color="warn" [routerLink]="['/employees']">
+                    Cancel
+                </a>
+                <button type="submit" [disabled]="!empForm.valid" mat-flat-button color="primary">save</button>
+
+            </div>
+
+        </form>
+
+    </mat-card>
+
+</div>
