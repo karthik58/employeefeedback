@@ -50,7 +50,7 @@
 
             <mat-form-field class="example-full-width">
                 <mat-label>Address</mat-label>
-                <input matInput placeholder="comments" formControlName="comments" [errorStateMatcher]="matcher">
+                <textarea matInput placeholder="comment here..." formControlName="comments" [errorStateMatcher]="matcher"></textarea>
                 <mat-error>
                     <span *ngIf="!empForm.get('comments').valid && empForm.get('comments').touched">Please enter
                         comments</span>
